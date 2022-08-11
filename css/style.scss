@@ -1,3 +1,10 @@
+@mixin responsive {
+  @media screen and (max-width: 690px){
+    @content
+  }
+  
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -35,10 +42,21 @@ $gutter: 24px;
 @for $i from 1 through 12{
   .grid-#{$i}{
     width: calc(grid($i) - $gutter);
-    margin: 0 12px;
+    margin: 12px;
     background-color: #444;
     border-radius: 8px;
     height: 72px;
     float: left;
   }
+
+  @include responsive(){
+    .grid-#{$i}{
+      width: calc(100% - $gutter);
+      margin: 12px;
+      background-color: #444;
+      border-radius: 8px;
+      height: 72px;
+    }
+  }
 }
+
